@@ -56,6 +56,39 @@ I typed `bulls`. The box became `Chicago Bulls`. The pill `.ds-correction-panel`
 
 The boot lasts until `/api/today` and local game state finish. That is why DESCENDING is first paint. The 3s pill is `PREVIEW_MS`. The ring is `ANSWER_MS`. Ten points becoming 100m matches the on-screen rule that one point is 10 metres. Canvas color stops behind the webp bands are `#1d5580` at 0m down to `#02050b` at 5200m. Low-power mode would replace some sprite fish with fillRect blobs. I did not turn that on.
 
+## Motions read from the public CSS on 11 Nov 2026
+
+These are the rules in the live stylesheet, not guesses.
+
+- `ds-boot-bob` is 2.4s. The shrimp moves 9px and rocks from -4 degrees to 4.
+- `ds-boot-pulse` fades the label to 0.45 and back.
+- `ds-title-flicker` is 5s, step-end. It dips opacity near the end of the loop.
+- Each title letter uses `ds-bob-l`, 3.2s, 9px, with 0.18s between letters.
+- `ds-btn-bob` is 1.9s and drops the begin button 5px.
+- `ds-card-in` is 0.7s from 46px down and scale 0.92.
+- `ds-banner-in` starts at scale 0.5.
+- `ds-icon-bob` is 2.6s and lifts the tier picture 8px.
+- `ds-sweep-spin` is 2.4s.
+- The public script names `descendToRound` with 2400ms. That is the camera drop between a score and the next prompt.
+
+## Finished dive, from the public script
+
+The done view is class `ds-done`. It covers the sea with a dark gradient and scrolls.
+
+The top row is the chromatic word KRILLION and "Dive #N complete". The score is a large number beside minus the depth in metres. Under that, "better than X% of today's players".
+
+Then "the catch" lists the seven rounds with a tier mark, the prompt, and the player's answer.
+
+Then "the bearing" lists five bands. The band that holds the score is bright.
+
+- 0-150. Plankton. Plenty of ocean left down there.
+- 151-250. Schooler. Swimming with the school.
+- 251-350. Rare. Below the thermocline. Nice.
+- 351-449. Deep cut. Seriously deep dive.
+- 450+. One in a krillion. Trench dweller. Absurd.
+
+The actions are Copy result, Share when the browser allows it, KEEP DIVING, ARCHIVE, and THEMED PACKS. A full seven-prompt sit-through was not played on their site. The layout above is from the script that renders that screen. `shots/ending.png` is the same layout running locally.
+
 ## Gaps
 
 I did not time boot-to-home with a clock.

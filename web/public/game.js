@@ -149,6 +149,44 @@ function timeUp() {
   });
 }
 
+function wordmark() {
+  const title = el("h1", "title");
+  "KRILLION".split("").forEach((letter, index) => {
+    const span = el("span", null, letter);
+    span.style.animationDelay = `${index * 0.18}s`;
+    title.append(span);
+  });
+  return title;
+}
+
+const BANDS = [
+  { min: 0, tier: "t1", range: "0-150", verdict: "Plankton. Plenty of ocean left down there." },
+  { min: 151, tier: "t3", range: "151-250", verdict: "Schooler. Swimming with the school." },
+  { min: 251, tier: "t4", range: "251-350", verdict: "Rare. Below the thermocline. Nice." },
+  { min: 351, tier: "t5", range: "351-449", verdict: "Deep cut. Seriously deep dive." },
+  { min: 450, tier: "t6", range: "450+", verdict: "One in a krillion. Trench dweller. Absurd." },
+];
+
+function bandFor(score) {
+  return BANDS.reduce((current, band) => (score >= band.min ? band : current), BANDS[0]);
+}
+
+function descend() {
+  if (state.run.results.length >= 7) {
+    state.run.phase = "summary";
+    save();
+    reportFinish();
+    render();
+    return;
+  }
+  state.dropping = true;
+  render();
+  setTimeout(() => {
+    state.dropping = false;
+    startPreview();
+  }, 2400);
+}
+
 function startPreview() {
   state.menu = false;
   state.rules = false;
@@ -428,11 +466,11 @@ function render() {
   const stage = el("div", "stage");
   sea(stage);
   menuButton(stage);
-  if (state.run.phase !== "gate") hud(stage);
+  if (state.run.phase !== "gate" && state.run.phase !== "summary") hud(stage);
 
   if (state.run.phase === "gate") {
     const home = el("div", "home");
-    home.append(el("h1", "title", "KRILLION"));
+    home.append(wordmark());
     home.append(el("p", "tag", "THE DAILY DIVE"));
     home.append(el("p", "sub", "7 prompts · 25 seconds each · rarer answers sink deeper"));
     const how = el("button", "howto", "▸  HOW TO PLAY");
@@ -501,16 +539,9 @@ function render() {
       landed.append(el("p", "tpts", `+${row.score} PTS · sink ${row.score * 10}m`));
       landed.append(el("p", "tsub", row.blurb));
     }
-    const next = el("button", "next", state.run.results.length >= 7 ? "SEE THE TRENCH" : "DESCEND ▼");
+    const next = el("button", "next", state.run.results.length >= 7 ? "DESCEND ▼" : "DESCEND ▼");
     next.type = "button";
-    next.addEventListener("click", () => {
-      if (state.run.results.length >= 7) {
-        state.run.phase = "summary";
-        save();
-        reportFinish();
-        render();
-      } else startPreview();
-    });
+    next.addEventListener("click", descend);
     landed.append(next);
     if (state.note) {
       const flag = el("button", "note", "that should have counted");
@@ -522,21 +553,82 @@ function render() {
   }
 
   if (state.run.phase === "summary") {
-    const landed = el("div", "landed");
-    landed.append(el("p", "tname", `${metres()}m`));
-    landed.append(el("p", "tpts", `${total()} points. come back tomorrow.`));
-    if (state.histogram?.total === 1) landed.append(el("p", "tsub", "You are the only diver recorded today."));
-    else if (state.histogram?.percent > 0) landed.append(el("p", "tsub", `Deeper than ${state.histogram.percent}% of divers.`));
-    else if (state.histogram?.total > 1) landed.append(el("p", "tsub", "Same band as the other divers today."));
-    const share = el("button", "next", "SHARE");
+    const done = el("div", "done");
+    const inner = el("div", "done-inner");
+    const top = el("div", "done-top");
+    top.append(el("span", "done-brand", "KRILLION"), el("span", "done-id", `Dive #${state.today.dive} complete`));
+    const scoreLine = el("div");
+    scoreLine.append(el("span", "done-score", String(total())));
+    scoreLine.append(el("span", "done-depth", `-${metres().toLocaleString("en-US")}m`));
+    const head = el("div");
+    head.append(top, scoreLine);
+    if (state.histogram?.total > 1) head.append(el("p", "done-pct", `better than ${state.histogram.percent}% of today's players`));
+    else if (state.histogram?.total === 1) head.append(el("p", "done-pct", "you are the first diver recorded today"));
+    inner.append(head);
+
+    const catchList = el("ul", "catch");
+    state.run.results.forEach((row, index) => {
+      const item = el("li");
+      item.append(el("span", "q", String(index + 1)));
+      if (row.tier !== "miss") item.append(img(tierOf(row.tier).icon, null, tierOf(row.tier).name));
+      else item.append(el("span", "q", "miss"));
+      const words = el("div");
+      const prompt = state.today.prompts[index];
+      words.append(el("p", "q", prompt?.text ?? ""));
+      words.append(el("p", null, row.answer || "—"));
+      item.append(words);
+      catchList.append(item);
+    });
+    const caught = el("section");
+    caught.append(el("p", "fathom", "the catch"), catchList);
+    inner.append(caught);
+
+    const current = bandFor(total());
+    const bearing = el("ul", "bearing");
+    BANDS.forEach((band) => {
+      const item = el("li");
+      const tier = tierOf(band.tier);
+      item.append(img(tier.icon, null, tier.name));
+      const range = el("span", "range", band.range);
+      range.style.color = band === current ? "#e8f1ff" : "#7d93b8";
+      item.append(range);
+      item.append(el("span", band === current ? "on" : "off", band.verdict));
+      bearing.append(item);
+    });
+    const bearingSection = el("section");
+    bearingSection.append(el("p", "fathom", "the bearing"), bearing);
+    inner.append(bearingSection);
+
+    const actions = el("div", "done-actions");
+    const copy = el("button", "copy", state.copied ? "Copied" : "Copy result");
+    copy.type = "button";
+    copy.addEventListener("click", async () => {
+      const lines = state.run.results.map((row, index) => `${index + 1}. ${row.answer || "miss"}`);
+      const text = `Dive #${state.today.dive} ${total()} -${metres()}m\n${lines.join("\n")}`;
+      try {
+        await navigator.clipboard.writeText(text);
+        state.copied = true;
+        render();
+        setTimeout(() => {
+          state.copied = false;
+          render();
+        }, 2000);
+      } catch {
+        state.line = "Could not copy.";
+        render();
+      }
+    });
+    const share = el("button", "quiet", "Share");
     share.type = "button";
     share.addEventListener("click", () => shareCard().catch(() => {
       state.line = "Could not make the picture.";
       render();
     }));
-    landed.append(share);
-    if (state.line) landed.append(el("p", "tsub", state.line));
-    stage.append(landed);
+    actions.append(copy, share);
+    inner.append(actions);
+    if (state.line) inner.append(el("p", "done-pct", state.line));
+    done.append(inner);
+    stage.append(done);
   }
 
   if (state.run.phase === "answer") {
