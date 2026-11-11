@@ -1,0 +1,177 @@
+{
+  "source": "https://krillion.io",
+  "captured": "2026-11-11",
+  "note": "Visual shell only. No prompt text, answer lists, or ad files.",
+  "files": [
+    {
+      "url": "https://krillion.io/_next/static/media/0c8c4ded07fff55c-s.p.2tcyrya9o07vu.woff2",
+      "local": "web/public/vendor/krillion/fonts/vt323-latin.woff2",
+      "what": "VT323 latin woff2. Preloaded. Computed font-family on game screens."
+    },
+    {
+      "url": "https://krillion.io/_next/static/media/674d141a92451548-s.2n-wf6s8aqfs0.woff2",
+      "local": "web/public/vendor/krillion/fonts/vt323-latin-ext.woff2",
+      "what": "VT323 latin-ext woff2 from CSS @font-face. Not requested on the latin-only daily loop."
+    },
+    {
+      "url": "https://krillion.io/_next/static/media/42b07301cbfb88de-s.01esg-5vzborl.woff2",
+      "local": "web/public/vendor/krillion/fonts/vt323-latin-ext-viet.woff2",
+      "what": "VT323 Vietnamese/latin-ext woff2 from CSS @font-face. Not requested on the daily loop."
+    },
+    {
+      "url": "https://krillion.io/water-bg.webp",
+      "local": "web/public/vendor/krillion/water-bg.webp",
+      "what": "Tiled water floor. img.ds-floor inside .ds-world. Also CSS url(/water-bg.webp) on .water-backdrop-img."
+    },
+    {
+      "url": "https://krillion.io/gen/optimized/v1/bg-sky.webp",
+      "local": "web/public/vendor/krillion/gen/optimized/v1/bg-sky.webp",
+      "what": "Sky band drawn onto canvas.ds-sea."
+    },
+    {
+      "url": "https://krillion.io/gen/optimized/v1/bg-top.webp",
+      "local": "web/public/vendor/krillion/gen/optimized/v1/bg-top.webp",
+      "what": "Shallow water band drawn onto canvas.ds-sea."
+    },
+    {
+      "url": "https://krillion.io/gen/optimized/v1/bg-mid.webp",
+      "local": "web/public/vendor/krillion/gen/optimized/v1/bg-mid.webp",
+      "what": "Mid water band drawn onto canvas.ds-sea."
+    },
+    {
+      "url": "https://krillion.io/gen/optimized/v1/bg-trench.webp",
+      "local": "web/public/vendor/krillion/gen/optimized/v1/bg-trench.webp",
+      "what": "Deep water band drawn onto canvas.ds-sea."
+    },
+    {
+      "url": "https://krillion.io/gen/party/puffer-0.png",
+      "local": "web/public/vendor/krillion/gen/party/puffer-0.png",
+      "what": "Puffer Party button art on home and in the menu. Preloaded. 399x392."
+    },
+    {
+      "url": "https://krillion.io/gen/party/puffer-1.png",
+      "local": "web/public/vendor/krillion/gen/party/puffer-1.png",
+      "what": "Same-origin puffer frame. Not requested on the daily loop. puffer-4.png and puffer-5.png 404."
+    },
+    {
+      "url": "https://krillion.io/gen/party/puffer-2.png",
+      "local": "web/public/vendor/krillion/gen/party/puffer-2.png",
+      "what": "Same-origin puffer frame. Not requested on the daily loop."
+    },
+    {
+      "url": "https://krillion.io/gen/party/puffer-3.png",
+      "local": "web/public/vendor/krillion/gen/party/puffer-3.png",
+      "what": "Same-origin puffer frame. Not requested on the daily loop."
+    },
+    {
+      "url": "https://krillion.io/tiers/krillion.png",
+      "local": "web/public/vendor/krillion/tiers/krillion.png",
+      "what": "Mascot sprite. img inside .ds-mascot-sprite. Also the boot krill. Preloaded. 256x256."
+    },
+    {
+      "url": "https://krillion.io/tiers/krillion-gold.png",
+      "local": "web/public/vendor/krillion/tiers/krillion-gold.png",
+      "what": "Gold mascot variant requested by the scene engine. 256x256."
+    },
+    {
+      "url": "https://krillion.io/tiers/plankton.png",
+      "local": "web/public/vendor/krillion/tiers/plankton.png",
+      "what": "Plankton reveal icon. img.icon inside .ds-landed. 256x256, shown at 88px."
+    },
+    {
+      "url": "https://krillion.io/tiers/tooclever.png",
+      "local": "web/public/vendor/krillion/tiers/tooclever.png",
+      "what": "Too-clever tier sprite named by public JS /tiers/${tier}.png. 256x256."
+    },
+    {
+      "url": "https://krillion.io/tiers/schooler.png",
+      "local": "web/public/vendor/krillion/tiers/schooler.png",
+      "what": "Schooler fish. Canvas drawImage on .ds-fore at 32x32. Also HUD/wardrobe sprite. 256x256."
+    },
+    {
+      "url": "https://krillion.io/tiers/schooler-gold.png",
+      "local": "web/public/vendor/krillion/tiers/schooler-gold.png",
+      "what": "Gold schooler variant named by public JS. 256x256."
+    },
+    {
+      "url": "https://krillion.io/tiers/rare.png",
+      "local": "web/public/vendor/krillion/tiers/rare.png",
+      "what": "Rare tier sprite named by public JS. 256x256."
+    },
+    {
+      "url": "https://krillion.io/tiers/rare-gold.png",
+      "local": "web/public/vendor/krillion/tiers/rare-gold.png",
+      "what": "Gold rare variant named by public JS. 256x256."
+    },
+    {
+      "url": "https://krillion.io/tiers/deepcut.png",
+      "local": "web/public/vendor/krillion/tiers/deepcut.png",
+      "what": "Deep-cut tier sprite named by public JS. 256x256."
+    },
+    {
+      "url": "https://krillion.io/tiers/deepcut-gold.png",
+      "local": "web/public/vendor/krillion/tiers/deepcut-gold.png",
+      "what": "Gold deep-cut variant named by public JS. 256x256."
+    },
+    {
+      "url": "https://krillion.io/tiers/evil-krill-gold-v2.png",
+      "local": "web/public/vendor/krillion/tiers/evil-krill-gold-v2.png",
+      "what": "Seasonal/wardrobe krill named by public JS. Not shown on the daily loop I walked."
+    },
+    {
+      "url": "https://krillion.io/tiers/evil-krill-white-v2.png",
+      "local": "web/public/vendor/krillion/tiers/evil-krill-white-v2.png",
+      "what": "Seasonal/wardrobe krill named by public JS. Not shown on the daily loop I walked."
+    },
+    {
+      "url": "https://krillion.io/icon.png",
+      "local": "web/public/vendor/krillion/icon.png",
+      "what": "Favicon 256x256. Same pixels as tiers/krillion.png."
+    },
+    {
+      "url": "https://krillion.io/apple-icon.png",
+      "local": "web/public/vendor/krillion/apple-icon.png",
+      "what": "Apple touch icon 180x180."
+    },
+    {
+      "url": null,
+      "local": "web/public/vendor/krillion/shots/descending.png",
+      "what": "Full-page first paint. Dark boot with spinning pink krill and DESCENDING."
+    },
+    {
+      "url": null,
+      "local": "web/public/vendor/krillion/shots/home.png",
+      "what": "Full-page home. Sea, boat, fish, scanlines, wordmark, rules, dive button, archive/packs/unlimited, party art."
+    },
+    {
+      "url": null,
+      "local": "web/public/vendor/krillion/shots/prompt.png",
+      "what": "Full-page prompt with sonar ring, fuse, input, DIVE. Depth and score pods visible."
+    },
+    {
+      "url": null,
+      "local": "web/public/vendor/krillion/shots/correction.png",
+      "what": "Confirm moment. Input already rewrote the guess. Ring at 0 and hot pink. Correction pill itself is missing from this frame."
+    },
+    {
+      "url": null,
+      "local": "web/public/vendor/krillion/shots/reveal.png",
+      "what": "Full-page scored reveal. Plankton icon, +10, sink 100m, DESCEND."
+    },
+    {
+      "url": null,
+      "local": "web/public/vendor/krillion/shots/miss.png",
+      "what": "Full-page empty timeout. NOTHING LANDED, em dash, +0, the clock beat you to it."
+    },
+    {
+      "url": null,
+      "local": "web/public/vendor/krillion/shots/menu.png",
+      "what": "Guest menu overlay. Puffer art on Puffer Party. Did not open a room."
+    },
+    {
+      "url": null,
+      "local": "web/public/vendor/krillion/shots/settings.png",
+      "what": "Guest settings. Answer corrections on. Did not sign in."
+    }
+  ]
+}

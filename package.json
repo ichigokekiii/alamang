@@ -1,0 +1,13 @@
+{
+  "name": "alamang",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "dev": "wrangler dev --port 8787 --local",
+    "db": "wrangler d1 migrations apply alamang --local"
+  },
+  "devDependencies": {
+    "wrangler": "^4.50.0"
+  }
+}
