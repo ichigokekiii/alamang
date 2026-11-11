@@ -7,7 +7,7 @@ function p(id, text, answers) {
 }
 
 export const game = {
-  epoch: "2026-11-11",
+  epoch: "2026-11-10",
   tiers: [
     { id: "t1", score: 10, name: "Plankton", icon: "/vendor/krillion/tiers/plankton.png", blurb: "The answer everyone blurts out." },
     { id: "t2", score: 15, name: "Too Clever", icon: "/vendor/krillion/tiers/tooclever.png", blurb: "A famously obscure pick. Everyone reaches for it." },

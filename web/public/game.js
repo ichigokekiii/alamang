@@ -1,4 +1,4 @@
-const KEY = "alamang:v1";
+const KEY = "alamang:v2";
 const V = "/vendor/krillion";
 
 const state = {

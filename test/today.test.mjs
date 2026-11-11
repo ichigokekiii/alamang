@@ -10,8 +10,8 @@ test("Manila midnight is the date boundary", () => {
 });
 
 test("the pack repeats after seven Manila dates", () => {
-  assert.equal(diveNumber("2026-11-11", game.epoch), 1);
-  assert.equal(diveNumber("2026-11-17", game.epoch), 7);
+  assert.equal(diveNumber("2026-11-10", game.epoch), 1);
+  assert.equal(diveNumber("2026-11-16", game.epoch), 7);
   assert.equal(dayIndex(8, 7), 0);
 });
 
