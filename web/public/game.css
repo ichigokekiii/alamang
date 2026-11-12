@@ -48,7 +48,9 @@ button:focus-visible, input:focus-visible {
 .sky {
   display: block;
   width: 100%;
-  height: auto;
+  height: 48vh;
+  object-fit: cover;
+  object-position: center bottom;
   image-rendering: pixelated;
 }
 
@@ -68,21 +70,19 @@ button:focus-visible, input:focus-visible {
 }
 
 .fish { width: 28px; height: auto; opacity: 0.95; }
-.f1 { bottom: 28vh; left: 8%; animation: swim 14s linear infinite; }
-.f2 { bottom: 18vh; left: 30%; width: 18px; animation: swim 18s linear infinite reverse; }
-.f3 { bottom: 12vh; left: 55%; animation: swim 16s linear infinite; }
-.f4 { bottom: 22vh; left: 72%; width: 16px; animation: swim 20s linear infinite reverse; }
-.f5 { bottom: 8vh; left: 42%; animation: swim 12s linear infinite; }
+.f1 { bottom: 10vh; left: 4%; animation: swim 14s linear infinite; }
+.f2 { bottom: 6vh; left: 18%; width: 18px; animation: swim 18s linear infinite reverse; }
+.f3 { bottom: 14vh; right: 6%; left: auto; animation: swim 16s linear infinite; }
+.f4 { bottom: 7vh; right: 18%; left: auto; width: 16px; animation: swim 20s linear infinite reverse; }
+.f5 { bottom: 4vh; left: 46%; animation: swim 12s linear infinite; }
 
 .mascot {
   width: 54px;
-  bottom: 16vh;
-  right: 8%;
+  bottom: 11vh;
+  right: 7%;
   filter: drop-shadow(0 0 8px #ff5d8f);
   animation: icon-bob 2.6s ease-in-out infinite;
 }
-
-.sky { animation: bob-l 3.2s ease-in-out infinite; }
 
 .crt {
   position: fixed;
@@ -119,8 +119,15 @@ button:focus-visible, input:focus-visible {
 .pod .n.score { color: var(--pink); }
 
 .pips { display: flex; gap: 0.28rem; justify-content: center; padding-top: 0.35rem; }
-.pips img, .pip { width: 1.15rem; height: 1.15rem; image-rendering: pixelated; }
-.pip { display: inline-block; border: 1px solid #2a3d5c; background: #0b1526; }
+.pip { display: inline-block; width: 1.15rem; height: 1.15rem; border: 1px solid #2a3d5c; background: #0b1526; }
+.pip.hit { border-color: transparent; }
+.pip.t1 { background: #8fa3c4; }
+.pip.t2 { background: #ff9f43; }
+.pip.t3 { background: #4de3ff; }
+.pip.t4 { background: #b388ff; }
+.pip.t5 { background: #ff5d8f; }
+.pip.t6 { background: #ffd166; }
+.pip.miss { background: #3d4f6e; }
 
 .menu-btn, .dead, .begin, .next, .dive {
   border: 2px solid var(--cyan);
@@ -148,25 +155,22 @@ button:focus-visible, input:focus-visible {
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  padding: 18vh 1rem 1.4rem;
+  padding: 1rem 1rem 1.2rem;
   text-align: center;
 }
 
 .title {
   margin: 0;
-  font-size: clamp(4.2rem, 12vw, 7.6rem);
+  font-size: clamp(3.4rem, 10vw, 6.2rem);
   font-weight: 400;
-  letter-spacing: 0.06em;
-  line-height: 0.85;
+  letter-spacing: 0.04em;
+  line-height: 0.9;
   color: var(--foam);
-  text-shadow: 2px 0 #ff5d8f, -2px 0 #4de3ff;
-  animation: title-flicker 5s step-end infinite;
+  text-shadow: 1px 0 #ff5d8f, -1px 0 #4de3ff;
+  animation: title-flicker 5s step-end infinite, bob-l 3.2s ease-in-out infinite;
 }
 
-.title span {
-  display: inline-block;
-  animation: bob-l 3.2s ease-in-out infinite;
-}
+.title span { display: inline; animation: none; }
 
 .tag {
   margin: 0.4rem 0 0;
@@ -182,7 +186,7 @@ button:focus-visible, input:focus-visible {
 }
 
 .howto {
-  margin: 8vh 0 0.6rem;
+  margin: 1.4rem 0 0.6rem;
   color: var(--drift);
   background: none;
   border: 0;
@@ -241,12 +245,12 @@ button:focus-visible, input:focus-visible {
 .landed {
   text-align: center;
   width: min(34rem, calc(100% - 2rem));
-  margin: 42vh auto 0;
+  margin: 22vh auto 1.5rem;
   padding: 1rem 1rem 1.2rem;
   background: rgba(5, 10, 20, 0.62);
   position: relative;
   z-index: 4;
-  animation: card-in 0.8s var(--ease-out) both;
+  animation: banner-in 0.8s var(--ease-out) both;
 }
 .landed img { width: 88px; height: 88px; image-rendering: pixelated; animation: icon-bob 2.6s ease-in-out infinite; }
 .tname { margin: 0.4rem 0 0; font-size: 2.6rem; letter-spacing: 0.12em; }

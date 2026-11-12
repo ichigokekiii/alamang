@@ -172,6 +172,7 @@ function bandFor(score) {
 }
 
 function descend() {
+  if (state.dropping) return;
   if (state.run.results.length >= 7) {
     state.run.phase = "summary";
     save();
@@ -179,12 +180,7 @@ function descend() {
     render();
     return;
   }
-  state.dropping = true;
-  render();
-  setTimeout(() => {
-    state.dropping = false;
-    startPreview();
-  }, 2400);
+  startPreview();
 }
 
 function startPreview() {
@@ -403,13 +399,16 @@ function hud(stage) {
   const pips = el("div", "pips");
   for (let index = 0; index < 7; index += 1) {
     const row = state.run.results[index];
-    if (!row || row.tier === "miss") {
-      const blank = el("span", "pip");
-      blank.setAttribute("aria-label", row ? "miss" : "empty");
-      pips.append(blank);
+    const pip = el("span", "pip");
+    if (!row) pip.setAttribute("aria-label", "empty");
+    else if (row.tier === "miss") {
+      pip.classList.add("miss");
+      pip.setAttribute("aria-label", "miss");
     } else {
-      pips.append(img(tierOf(row.tier).icon, null, tierOf(row.tier).name));
+      pip.classList.add("hit", row.tier);
+      pip.setAttribute("aria-label", tierOf(row.tier).name);
     }
+    pips.append(pip);
   }
   const score = el("div", "pod right");
   score.append(el("div", "k", "SCORE"), el("div", "n score", String(total())));
